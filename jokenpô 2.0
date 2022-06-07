@@ -1,0 +1,85 @@
+from tkinter import *
+texto_escolha = texto_pc = texto_batalha = ''
+jogador = 0
+def jokenpo():
+#jogadas do computador
+     def jogadas_pc():
+        if pc == 1:
+            texto_pc = Label(janela, "o PC escolheu \033[35mpedra\033[0m")
+        elif pc == 2:
+            texto_pc = Label(janela, "o PC escolheu \033[35mpapel\033[0m")
+        else:
+            texto_pc = Label(janela,"o PC escolheu \033[35mtesoura\033[0m")
+        texto_pc.grid(column=1, row=7)
+
+#Menu
+    import random
+    from time import sleep
+    menu = ['[0] SAIR',
+    '[1] PEDRA',
+    '[2] PAPEL',
+    '[3] TESOURA']
+    for c in range(0,4):
+        tela_menu= Label(janela, text=menu)
+        tela_menu.grid(column=0, row=1+c)
+        menu.grid(column=0, row= 1)
+#batalha
+    while True:
+        pc = random.randint(1, 3)
+        texto_escolha = Label(janela, "Escolha um número para a batalha: ")
+        texto_escolha.grid(column=1, row=5)
+        
+        #caixa de entrada para o jogador
+        if jogador == 0:
+            texto_batalha = Label(janela,"A batalha foi adiada... Volte quando quiser! ")
+            break
+        #parte jokenpô
+        jo = Label(janela,"\033[34mJO\033[0m")
+        jo.grid(column=1,row=1)
+        sleep(1)
+        ken = Label(janela,"\033[35mKEN\033[0m")
+        ken.grid(column=1,row=2)
+        sleep(1)
+        po = Label(janela, "\033[32mPÔ\033[0m")
+        po.grid(column=1,row=3)
+        sleep(1)
+        #mostrando o que o pc escolheu
+        jogadas_pc()
+
+        if pc == jogador:
+            texto_batalha = Label(janela, "A batalha foi tensa... não há ganhadores, nem perdedores. ")
+        elif jogador == 1:
+            if pc == 2:
+                texto_batalha = Label(janela, "Papel embrulha a pedra e a plateia vai a loucuuuura... \033[35mVocê perdeu!\033[0m")
+            elif pc == 3:
+                texto_batalha = Label(janela, "A batalha foi travada... Pedra, a mais indestrutível dos concorrentes com um único golpe quebrou a tesoura. \033[32mVocê ganhou!\033[0m")
+        elif jogador == 2:
+            if pc == 1:
+                texto_batalha = Label(janela, "Papel embrulha a pedra e a plateia vai a loucuuuura... \033[33mVocê ganhou!\033[0m")
+            elif pc == 3:
+                texto_batalha = Label(janela,"o papel até tentou resistir... mas contra a mais afiada dos lutadores ele não da conta... \033[35mVocê perdeu!\033[0m")
+        elif jogador == 3:
+            if pc == 1:
+                texto_batalha = Label(janela, "A batalha foi travada... Pedra, a mais indestrutível dos concorrentes com um único golpe quebrou a tesoura. \033[35mVocê perdeu!\033[0m")
+            elif pc == 2:
+                texto_batalha = Label(janela, "o papel até tentou resistir... mas contra a mais afiada dos lutadores ele não da conta... \033[33mVocê ganhou!\033[0m")
+        texto_batalha.grid(column=1, row= 8)
+        Label(janela,'')
+
+
+janela = Tk()
+janela.title("JOKENPÔ DA PANDA")
+janela['bg']='green'
+inicio = Label(janela,text="Está pronto para uma emocionante aventura?")
+inicio.grid(column=0, row=0)
+botao = Button(janela,text="clique para continuar", command=jokenpo)
+botao.grid(column=0, row=1)
+jogador = Entry(janela)
+jogador['width'] = 10
+jogador["font"] = ("Arial", "10")
+jogador.grid(column=1, row=6)
+jogador.focus()
+jogador = jogador.get()
+
+
+janela.mainloop()
