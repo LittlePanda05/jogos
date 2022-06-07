@@ -1,6 +1,20 @@
 from tkinter import *
 texto_escolha = texto_pc = texto_batalha = ''
-jogador = 0
+#parte da interface
+janela = Tk()
+janela.title("JOKENPÔ DA PANDA")
+janela['bg']='green'
+inicio = Label(janela,text="Está pronto para uma emocionante aventura?")
+inicio.grid(column=0, row=0)
+botao = Button(janela,text="clique para continuar", command=jokenpo)
+botao.grid(column=0, row=1)
+jogador = Entry(janela)
+jogador['width'] = 10
+jogador["font"] = ("Arial", "10")
+jogador.grid(column=1, row=6)
+jogador.focus()
+jogador = jogador.get()
+
 def jokenpo():
 #jogadas do computador
      def jogadas_pc():
@@ -67,19 +81,7 @@ def jokenpo():
         Label(janela,'')
 
 
-janela = Tk()
-janela.title("JOKENPÔ DA PANDA")
-janela['bg']='green'
-inicio = Label(janela,text="Está pronto para uma emocionante aventura?")
-inicio.grid(column=0, row=0)
-botao = Button(janela,text="clique para continuar", command=jokenpo)
-botao.grid(column=0, row=1)
-jogador = Entry(janela)
-jogador['width'] = 10
-jogador["font"] = ("Arial", "10")
-jogador.grid(column=1, row=6)
-jogador.focus()
-jogador = jogador.get()
+
 
 
 janela.mainloop()
