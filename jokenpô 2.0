@@ -36,7 +36,7 @@ def jokenpo():
     '[3] TESOURA']
     for c in range(0,4):
         tela_menu= Label(janela, text=menu)
-        tela_menu.grid(column=0, row=1+c)
+        tela_menu.grid(column=0, row=0+c)
         menu.grid(column=0, row= 1)
 #batalha
     while True:
