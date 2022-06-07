@@ -1,4 +1,6 @@
 from tkinter import *
+import random
+from time import sleep
 texto_escolha = texto_pc = texto_batalha = ''
 #parte da interface
 janela = Tk()
@@ -28,12 +30,8 @@ def jokenpo():
         texto_pc.grid(column=1, row=7)
 
 #Menu
-    import random
-    from time import sleep
-    menu = ['[0] SAIR',
-    '[1] PEDRA',
-    '[2] PAPEL',
-    '[3] TESOURA']
+
+    menu = ['[0] SAIR','[1] PEDRA','[2] PAPEL','[3] TESOURA']
     for c in range(0,4):
         tela_menu= Label(janela, text=menu)
         tela_menu.grid(column=0, row=0+c)
@@ -80,6 +78,7 @@ def jokenpo():
                 texto_batalha = Label(janela, "o papel até tentou resistir... mas contra a mais afiada dos lutadores ele não da conta... \033[33mVocê ganhou!\033[0m")
         texto_batalha.grid(column=1, row= 8)
         Label(janela,'')
+
 
 
 
