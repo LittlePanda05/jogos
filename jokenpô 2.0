@@ -14,6 +14,7 @@ jogador["font"] = ("Arial", "10")
 jogador.grid(column=1, row=6)
 jogador.focus()
 jogador = jogador.get()
+janela.mainloop()
 
 def jokenpo():
 #jogadas do computador
@@ -84,4 +85,4 @@ def jokenpo():
 
 
 
-janela.mainloop()
+
